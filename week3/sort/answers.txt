@@ -1,0 +1,12 @@
+sort1 uses: Bubble sort
+
+How do you know?: The Omega value (sorted numbers) and Big O values are roughly the same.
+
+sort2 uses: Merge sort
+
+How do you know?: It takes a lot less time than sort 1 and 3 for both random and reversed
+and the Omega value (sorted numbers) and Big O values are roughly the same.
+
+sort3 uses: Selection sort
+
+How do you know?: The Omega value (sorted numbers) is a lot greater than the Big O value.

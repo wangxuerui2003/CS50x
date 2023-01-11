@@ -1,0 +1,54 @@
+:root {
+	--dark: #374151;
+	--darker: #1F2937;
+	--darkest: #111827;
+	--grey: #6B7280;
+	--pink: #EC4899;
+	--purple: #8B5CF6;
+	--light: #EEE;
+    --bs-cyan: #0dcaf0;
+    --light-yellow: #ffff66;
+    --dark-brown: #996633;
+    --light-pink: #ffccff;
+    --dark-purple: #660066;
+    --happy: #78c0a8;
+}
+
+body {
+    background-color: var(--light-pink);
+    display: flex;
+	flex-direction: column;
+}
+
+nav .navbar-brand, #setting-icon {
+    font-size: xx-large;
+}
+
+#nav-menu {
+    background-color: var(--light-yellow);
+}
+
+#home-icon {
+    color: #9732a8;
+}
+
+.tasks-card {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.habits-card {
+    background-color: var(--happy);
+    color: var(--light);
+}
+
+.add-new-div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.add-new-div i {
+    font-size: 8rem;
+    border-style: none;
+}

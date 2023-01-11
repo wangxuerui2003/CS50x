@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Habits
+{% endblock %}
+
+{% block main %}
+
+<div class="d-flex flex-row justify-content-between bd-highlight mb-3" style="height: 500px">
+    <div class="card habits-card" style="width:25rem">
+      <h3 class="text-center">Habits</h3>
+      <input hidden value="{{ current }}" id="current-tasks">
+      <div class="card-body py-4 px-4 px-md-5">
+        <div class="d-flex flex-column bd-highlight" id="today-habit">
+          {% for habit in habits %}
+            <div class="form-check h4">
+              <input class="form-check-input bg-success check-habit" type="checkbox" name="habit"
+              {% if habit['today_done'] == 1 %}
+                checked disabled
+              {% endif %}
+               value="{{ habit['content'] }}">
+              <label class="form-check-label
+              {% if habit['today_done'] == 1 %}
+                text-decoration-line-through
+              {% endif %}
+              text-primary">
+                {{ habit['content'] }}
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+	<div class="card habits-card" style="width:25rem">
+		<h3 class="text-center">Done</h3>
+		<div class="card-body py-4 px-4 px-md-5">
+		  <div class="d-flex flex-column bd-highlight mb-3">
+			{% for habit in done %}
+			  <div class="form-check h3">
+				<label class="form-check-label text-secondary" disabled>
+				  {{ habit['content'] }}
+				</label>
+			{% endfor %}
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="btn-group dropup add-new-div">
+  <i class="btn btn-outline-info pull-right bx bxs-plus-circle"
+    data-bs-placement="top" data-bs-toggle="dropdown" aria-expanded="false"
+    title="Add a new habit" id="add-button">
+  </i>
+  <ul class="dropdown-menu p-2">
+    <li>
+      <form method="post" class="text-center" action="/habits">
+        <div class="mb-3">
+          <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="habit" placeholder="Habit" type="text" required>
+        </div>
+		<!-- <select class="form-select mx-auto w-auto" name="frequency" required>
+			<option disabled selected>Select a frequency</option>
+			<option value="everyday">Everyday</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+		</select> -->
+		<div class="mb-3">
+			<input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="span" placeholder="Days (Default 30)" type="number">
+		</div>
+        <input class="btn btn-success" type="submit" value="Add">
+      </form>
+    </li>
+  </ul>
+</div>
+
+{% endblock %}

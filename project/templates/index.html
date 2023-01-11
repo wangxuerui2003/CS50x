@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+<div class="d-flex flex-row justify-content-evenly bd-highlight mb-3" style="height: 500px">
+    <!-- Current tasks -->
+    <div class="card tasks-card" style="width:25rem">
+      <h3 class="text-center">Today {{ done }}/8</h3>
+      <input hidden value="{{ current }}" id="current-tasks">
+      <div class="card-body py-4 px-4 px-md-5">
+        <div class="d-flex flex-column bd-highlight" id="today-tasks">
+          {% for task in tasks %}
+            <div class="form-check h4">
+              <input class="form-check-input bg-success check-task" type="checkbox" name="task"
+              {% if task['done'] == 1 %}
+                checked disabled
+              {% endif %}
+               value="{{ task['content'] }}">
+              <label class="form-check-label
+              {% if task['done'] == 1 %}
+                text-decoration-line-through
+              {% endif %}
+              text-info">
+                {{ task['content'] }}
+              </label>
+              {% if task['done'] == 0 %}
+                <i class="bx bx-calendar-x text-danger delete-button" type="button"></i>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- Expired tasks -->
+    <div class="card tasks-card" style="width:25rem">
+      <h3 class="text-center">Expired</h3>
+      <div class="card-body py-4 px-4 px-md-5">
+        <div class="d-flex flex-column bd-highlight mb-3">
+          {% for task in expired %}
+            <div class="form-check h4">
+              <label class="form-check-label text-info">
+                {{ task['content'] }}
+              </label>
+              <i class='bx bx-refresh text-warning reset-button' type="button"></i>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="btn-group dropup add-new-div">
+  <i class="btn btn-outline-warning pull-right bx bxs-plus-circle"
+    data-bs-placement="top" data-bs-toggle="dropdown" aria-expanded="false"
+    title="Add a new task" id="add-button">
+  </i>
+  <ul class="dropdown-menu p-2">
+    <li>
+      <form method="POST" class="text-center" id="create-task">
+        <div class="mb-3 ">
+          <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="task-content" name="task" placeholder="Add new task" type="text" required>
+        </div>
+        <input class="btn btn-success" type="submit" value="Add">
+      </form>
+    </li>
+  </ul>
+</div>
+
+{% endblock %}

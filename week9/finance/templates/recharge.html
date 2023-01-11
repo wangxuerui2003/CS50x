@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recharge
+{% endblock %}
+
+{% block main %}
+    <h1>Select the amount you want to recharge:</h1>
+    <div class="container-fluid"></div>
+        <form>
+            <button class="btn btn-info btn-lg" name="amount" value="1" type="button">$1.00</button>
+            <button class="btn btn-info btn-lg" name="amount" value="6" type="button">$6.00</button>
+            <button class="btn btn-info btn-lg" name="amount" value="30" type="button">$30.00</button>
+            <button class="btn btn-info btn-lg" name="amount" value="68" type="button">$68.00</button>
+            <button class="btn btn-info btn-lg" name="amount" value="128" type="button">$128.00</button>
+            <button class="btn btn-info btn-lg" name="amount" value="198" type="button">$198.00</button>
+            <button class="btn btn-info btn-lg" name="amount" value="328" type="button">$328.00</button>
+            <button class="btn btn-info btn-lg" name="amount" value="648" type="button">$648.00</button>
+        </form>
+    </div>
+    <div class="container-md my-5">
+        <form id="confirm" action="/recharge" method="post">
+
+        </form>
+    </div>
+    <script src="/static/script.js"></script>
+{% endblock %}
